@@ -12,9 +12,25 @@ const Class = function(){
 	// Другая форма записи для доступа к классу
 	klass.fn.parent = klass;
 
+	klass.extend = function (obj) {
+		var extended = obj.extended;
+
+		if (extended) extended(klass)
+	};
+
+	klass.include = function (obj) {
+		var included = obj.included;
+
+		
+		if (included) included(klass)
+	};
+
 	return klass;
 
 };
 
 var Person = new Class;
-console.log(Person);
+
+var person = new Person();
+
+console.log(person);
